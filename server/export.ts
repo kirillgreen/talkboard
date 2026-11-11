@@ -1,6 +1,7 @@
 // Exports the board as one self-contained, read-only HTML file: fonts and images inside, opens from disk, can be sent as an attachment.
-// usage: bun server/export.ts --out board.html [--data <dir>] [--frames <id,id>] [--title "…"]
+// usage: bun server/export.ts --out board.html [--data <dir>] [--frames <id,id>] [--title "…"] [--with-notes]
 // --frames keeps only those top-level frames and everything whose centre lies inside them (frame ids: the inspector or data/elements).
+// Cards with "Show when presenting" unticked are speaker notes: they stay out of the file unless --with-notes is given.
 // Images are downsized to 1600 px when cwebp is installed; otherwise the originals go in as they are.
 import { readFileSync, readdirSync, existsSync, mkdtempSync, rmSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -10,7 +11,7 @@ const ROOT = resolve(import.meta.dir, "..");
 const argOf = (name: string) => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : undefined; };
 const DATA = resolve(argOf("--data") || join(ROOT, "data"));
 const OUT = argOf("--out");
-if (!OUT) { console.error("usage: bun server/export.ts --out board.html [--data <dir>] [--frames <id,id>] [--title \"…\"]"); process.exit(1); }
+if (!OUT) { console.error("usage: bun server/export.ts --out board.html [--data <dir>] [--frames <id,id>] [--title \"…\"] [--with-notes]"); process.exit(1); }
 const TITLE = argOf("--title") || "talkboard";
 const FRAMES = (argOf("--frames") || "").split(",").filter(Boolean);
 
@@ -31,6 +32,12 @@ if (FRAMES.length) {
   keep = Object.fromEntries(Object.entries(els).filter(([id, d]) => FRAMES.includes(id) || (d.kind !== "group" && inside(d))));
   for (const d of Object.values(keep)) if (d.parent && els[d.parent]) keep[d.parent] = els[d.parent];   // the groups they belong to
   for (const [id, d] of Object.entries(els)) if (d.kind === "arrow" && keep[d.from] && keep[d.to]) keep[id] = d;   // arrows between kept cards
+}
+let notes = 0;
+if (!process.argv.includes("--with-notes")) {
+  keep = { ...keep };
+  for (const [id, d] of Object.entries(keep)) if (d.noshow) { delete keep[id]; notes++; }
+  for (const [id, d] of Object.entries(keep)) if (d.kind === "arrow" && (!keep[d.from] || !keep[d.to])) delete keep[id];   // arrows to a dropped note
 }
 const store: Record<string, any> = {};
 for (const [id, d] of Object.entries(keep)) store["elements/" + id] = d;
@@ -81,4 +88,4 @@ const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const body = r("src/index.html").replace("<title>talkboard</title>", () => `<title>${esc(TITLE)}</title>`).replace("/*CSS*/", () => css).replace("/*JS*/", () => js);
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><script>${stub}</script></head><body>${body}</body></html>`;
 await Bun.write(OUT, html);
-console.log(`${OUT}: ${Math.round(html.length / 1024)} KB · ${Object.keys(keep).length} items · ${Object.keys(blobs).length} files`);
+console.log(`${OUT}: ${Math.round(html.length / 1024)} KB · ${Object.keys(keep).length} items · ${Object.keys(blobs).length} files${notes ? ` · ${notes} speaker notes left out (--with-notes keeps them)` : ""}`);

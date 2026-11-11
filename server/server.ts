@@ -104,8 +104,13 @@ function preview(src: string, id: string, w: number): Promise<string | null> {
 }
 
 // ---------- git snapshots (--git): hourly if anything changed, and on server stop ----------
-const REPO = SNAPSHOTS ? (await run(["git", "-C", DATA, "rev-parse", "--show-toplevel"]))?.trim() || null : null;
+let REPO = SNAPSHOTS ? (await run(["git", "-C", DATA, "rev-parse", "--show-toplevel"]))?.trim() || null : null;
 if (SNAPSHOTS && !REPO) console.error("--git: the data folder is not inside a git repository, snapshots are off");
+if (REPO && Bun.spawnSync(["git", "-C", REPO, "check-ignore", "-q", "--", DATA]).exitCode === 0) {
+  console.error("--git: the data folder is git-ignored here (the default ./data is ignored by talkboard's own .gitignore); keep the board elsewhere with --data <dir> inside your own repository. Snapshots are off");
+  REPO = null;
+}
+if (REPO && !existsSync(join(DATA, ".gitignore"))) writeFileSync(join(DATA, ".gitignore"), ".previews/\n");   // previews are a cache: keep them out of snapshots
 async function snapshot(reason: string) {
   if (!REPO || !changedSince) return;
   changedSince = false;
@@ -126,8 +131,17 @@ for (const sig of ["SIGINT", "SIGTERM"] as const) process.on(sig, async () => { 
 // undo can still bring back an image from a card deleted today for a whole week.
 const UNREF = join(PREV, "unref.json");
 function sweep() {
+  try { sweepOnce(); } catch (e) { console.error("cleanup failed, retrying tomorrow", e); }
+}
+function sweepOnce() {
+  // A document that failed to parse may point at files we can't see: skip the whole sweep rather than delete them.
+  for (const c of COLLS) for (const f of readdirSync(join(DATA, c))) if (f.endsWith(".json") && !cache.get(c)!.has(f.slice(0, -5))) {
+    console.error("cleanup skipped: unreadable document", c + "/" + f); return;
+  }
+  // Every string value anywhere in a document counts as a reference, whatever the id looks like (uploads get 32 hex, the demo has names).
   const used = new Set<string>();
-  for (const c of COLLS) for (const d of cache.get(c)!.values()) for (const m of JSON.stringify(d).matchAll(/[0-9a-f]{32}/g)) used.add(m[0]);
+  const walk = (v: any) => { if (typeof v === "string") { used.add(v); for (const m of v.matchAll(/[0-9a-f]{32}/g)) used.add(m[0]); } else if (v && typeof v === "object") for (const x of Object.values(v)) walk(x); };
+  for (const c of COLLS) for (const d of cache.get(c)!.values()) walk(d);
   let seen: Record<string, number> = {}; try { seen = JSON.parse(readFileSync(UNREF, "utf8")); } catch { /* first run */ }
   const now = Date.now(), week = now - 7 * 864e5, next: Record<string, number> = {}; let n = 0;
   for (const f of readdirSync(FILES)) {

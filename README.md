@@ -21,7 +21,7 @@ Open http://127.0.0.1:4317. The first run copies a small demo board into `data/`
 | `--port 4320` | listen on another port (default 4317) |
 | `--data ~/talks/autumn` | keep the board in another folder (default `./data`); one folder is one board |
 | `--empty` | on a new data folder, start blank instead of copying the demo |
-| `--git` | commit the data folder once an hour when something changed; the folder must sit inside a git repository |
+| `--git` | commit the data folder once an hour when something changed; the folder must sit inside a git repository and not be ignored by it, so use it with `--data` (the default `./data` is ignored by talkboard's own `.gitignore`) |
 
 The server listens on 127.0.0.1 only. Every card, frame and view is a JSON file in the data folder, and pasted images and videos sit next to them in `data/files/`, so you can back the board up, diff it or sync it like any other folder. A file no card has pointed to for a week is deleted by a daily cleanup, so Undo keeps working on anything you removed recently. Edits from another tab or another window show up live.
 
@@ -85,7 +85,7 @@ bun run export --out part-1.html --frames f-start --title "Part 1"
 bun run export --data ~/talks/autumn --out autumn.html
 ```
 
-The file carries the fonts, the images and the board inside, opens from disk without a server, and cannot be edited. `--frames` keeps only the listed frames and what lies inside them; frame ids are the file names in `data/elements/`. With [cwebp](https://developers.google.com/speed/webp/download) installed, images are downsized to 1600 px on the way in; without it they go in as they are.
+The file carries the fonts, the images and the board inside, opens from disk without a server, and cannot be edited. Speaker notes, the cards with *Show when presenting* unticked, stay out of it; add `--with-notes` to keep them. `--frames` keeps only the listed frames and what lies inside them; frame ids are the file names in `data/elements/`. With [cwebp](https://developers.google.com/speed/webp/download) installed, images are downsized to 1600 px on the way in; without it they go in as they are.
 
 ## Layout of the code
 
