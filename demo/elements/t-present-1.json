@@ -1,0 +1,16 @@
+{
+ "fs": 17,
+ "id": "t-present-1",
+ "kind": "text",
+ "parent": null,
+ "status": "ready",
+ "style": "card",
+ "tags": [],
+ "text": "**Present.** The Present button goes fullscreen and walks through the whole board, then every frame from left to right, then your views. → and ← step, Esc leaves.",
+ "type": "howto",
+ "w": 340,
+ "x": 1930,
+ "y": 110,
+ "z": 11,
+ "zone": "present"
+}

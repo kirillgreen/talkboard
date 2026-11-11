@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-organise-3",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Filter.** Click a chip on the left to show only matching cards; ⇧-click adds a second value. Everything else fades out.",
+ "type": "howto",
+ "w": 340,
+ "x": 990,
+ "y": 345,
+ "z": 8,
+ "zone": "organise"
+}

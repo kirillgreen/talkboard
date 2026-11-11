@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-present-2",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Laser.** Press K and drag with the button held. The trail fades by itself, so you can point at things without leaving marks.",
+ "type": "howto",
+ "w": 340,
+ "x": 2310,
+ "y": 110,
+ "z": 12,
+ "zone": "present"
+}

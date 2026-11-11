@@ -1,0 +1,13 @@
+{
+  "name": "talkboard",
+  "version": "0.1.0",
+  "description": "A local canvas for talks and lessons: lay out cards in frames, sort them on three axes you name yourself, present frame by frame, export one read-only HTML file.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun server/server.ts",
+    "export": "bun server/export.ts"
+  },
+  "engines": { "bun": ">=1.1" }
+}

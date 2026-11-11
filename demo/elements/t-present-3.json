@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-present-3",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Focus a card.** While presenting, click a card and it fills the screen. Click again or press Esc to step back.",
+ "type": "howto",
+ "w": 340,
+ "x": 1930,
+ "y": 345,
+ "z": 13,
+ "zone": "present"
+}

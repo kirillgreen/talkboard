@@ -1,0 +1,14 @@
+{
+ "from": "t-organise-1",
+ "head": true,
+ "id": "a-frames-axes",
+ "kind": "arrow",
+ "parent": null,
+ "tags": [],
+ "to": "t-organise-2",
+ "x1": 0,
+ "x2": 0,
+ "y1": 0,
+ "y2": 0,
+ "z": 0
+}

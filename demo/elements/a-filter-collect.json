@@ -1,0 +1,14 @@
+{
+ "from": "t-organise-3",
+ "head": true,
+ "id": "a-filter-collect",
+ "kind": "arrow",
+ "parent": null,
+ "tags": [],
+ "to": "t-organise-4",
+ "x1": 0,
+ "x2": 0,
+ "y1": 0,
+ "y2": 0,
+ "z": 0
+}

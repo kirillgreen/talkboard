@@ -1,0 +1,14 @@
+{
+ "cam": null,
+ "filter": {
+  "status": [],
+  "type": [
+   "howto"
+  ],
+  "zone": []
+ },
+ "mode": "collect",
+ "name": "Only how-to",
+ "order": 0,
+ "sort": "zone"
+}

@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-start-4",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "Demo text written by Claude. When you are ready for your own board, open **Board settings → Clear the board**, or start the server with `--empty`.",
+ "type": "note",
+ "w": 340,
+ "x": 430,
+ "y": 345,
+ "z": 5,
+ "zone": "start"
+}

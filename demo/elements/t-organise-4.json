@@ -1,0 +1,16 @@
+{
+ "fs": 17,
+ "id": "t-organise-4",
+ "kind": "text",
+ "parent": null,
+ "status": "ready",
+ "style": "card",
+ "tags": [],
+ "text": "**Collect.** *Arrange → Collect* lines the visible cards up in columns by section, type, status or title. *In place* puts them back where they were.",
+ "type": "howto",
+ "w": 340,
+ "x": 1370,
+ "y": 345,
+ "z": 9,
+ "zone": "organise"
+}

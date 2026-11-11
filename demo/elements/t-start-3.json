@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-start-3",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Move around.** Hold Space and drag, or press H, to pan. ⌘+ and ⌘− zoom, ⇧1 fits the whole board, ⇧2 fits the selection, ⌘F searches every card.",
+ "type": "howto",
+ "w": 340,
+ "x": 50,
+ "y": 345,
+ "z": 4,
+ "zone": "start"
+}

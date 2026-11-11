@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-present-5",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Share it read-only.** `bun run export --out talk.html` builds one file with the fonts and images inside. It opens from disk, and nobody can change it.",
+ "type": "howto",
+ "w": 340,
+ "x": 1930,
+ "y": 580,
+ "z": 15,
+ "zone": "present"
+}

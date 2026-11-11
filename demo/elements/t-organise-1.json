@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-organise-1",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Frames are sections.** A card dropped into a frame takes the frame's section, and moving the frame carries everything inside it.",
+ "type": "idea",
+ "w": 340,
+ "x": 990,
+ "y": 110,
+ "z": 6,
+ "zone": "organise"
+}

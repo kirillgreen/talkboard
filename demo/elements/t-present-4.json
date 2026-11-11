@@ -1,0 +1,16 @@
+{
+ "fs": 17,
+ "id": "t-present-4",
+ "kind": "text",
+ "parent": null,
+ "status": "draft",
+ "style": "card",
+ "tags": [],
+ "text": "**Keep notes off stage.** Untick *Show when presenting* in the inspector: the card stays on your board and drops out of the show.",
+ "type": "idea",
+ "w": 340,
+ "x": 2310,
+ "y": 345,
+ "z": 14,
+ "zone": "present"
+}

@@ -1,0 +1,5 @@
+data/
+.previews/
+*.html
+!src/index.html
+.DS_Store

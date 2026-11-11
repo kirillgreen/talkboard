@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-organise-2",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Name your own axes.** Every card has a section, a type and a status. In **Board settings** you rename the axes, add values and pick their colours: weeks and formats for a course, acts and speakers for a talk.",
+ "type": "howto",
+ "w": 340,
+ "x": 1370,
+ "y": 110,
+ "z": 7,
+ "zone": "organise"
+}

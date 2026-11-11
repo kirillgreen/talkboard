@@ -1,0 +1,57 @@
+{
+ "status": {
+  "label": "Status",
+  "values": [
+   {
+    "c": 4,
+    "id": "draft",
+    "label": "draft"
+   },
+   {
+    "c": 1,
+    "id": "ready",
+    "label": "ready"
+   }
+  ]
+ },
+ "type": {
+  "label": "Type",
+  "values": [
+   {
+    "c": 1,
+    "id": "howto",
+    "label": "how-to"
+   },
+   {
+    "c": 5,
+    "id": "idea",
+    "label": "idea"
+   },
+   {
+    "c": 6,
+    "id": "note",
+    "label": "note"
+   }
+  ]
+ },
+ "zone": {
+  "label": "Section",
+  "values": [
+   {
+    "c": 1,
+    "id": "start",
+    "label": "Start here"
+   },
+   {
+    "c": 5,
+    "id": "organise",
+    "label": "Organise"
+   },
+   {
+    "c": 2,
+    "id": "present",
+    "label": "Present"
+   }
+  ]
+ }
+}

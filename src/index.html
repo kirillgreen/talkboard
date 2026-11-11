@@ -1,0 +1,63 @@
+<title>talkboard</title>
+<style>/*CSS*/</style>
+
+<main id="vp" class="vp" aria-label="Canvas">
+  <div id="world" class="world">
+    <div id="l-frames"></div>
+    <svg id="l-arrows" class="arrows" width="1" height="1" aria-hidden="true"></svg>
+    <div id="l-items"></div>
+  </div>
+  <div id="overlay" class="overlay">
+    <svg class="ov-svg"><path id="ov-hover" class="ov-hover"/><path id="ov-sel" class="ov-sel"/><path id="ov-scope" class="ov-scope"/><path id="ov-guides" class="ov-guides"/></svg>
+    <div id="marquee" class="marquee" hidden></div>
+    <div id="handles"></div>
+  </div>
+</main>
+
+<aside id="left" class="panel left" aria-label="Filters and views" hidden>
+  <div id="left-body" class="left-body"></div>
+</aside>
+
+<aside id="insp" class="panel insp" aria-label="Properties" hidden></aside>
+
+<nav id="tools" class="tools" aria-label="Tools">
+  <button data-tool="select" title="Select (V)" aria-label="Select"><svg viewBox="0 0 20 20"><path d="M5 3l10 7-4.5 1L13 16l-2 1-2.5-5L5 15z"/></svg></button>
+  <button data-tool="hand" title="Hand (H or Space)" aria-label="Hand"><svg viewBox="0 0 20 20"><path d="M7 10V4.5a1.2 1.2 0 012.4 0V9m0-5.500a1.2 1.2 0 012.4 0V9m0-4a1.2 1.2 0 012.4 0V9m0-2a1.2 1.2 0 012.4 0v5.500c0 3-2 5-5 5-2.600 0-3.700-1-5-3.500L3.500 11c-.8-1.500 1-2.500 2-1.300L7 11.500"/></svg></button>
+  <button data-tool="laser" title="Laser pointer (K): drag with the button held, the trail fades by itself" aria-label="Laser pointer"><svg viewBox="0 0 20 20"><path d="M3 17l7.5-7.5"/><circle cx="13.5" cy="6.5" r="2.5"/><path d="M13.5 1.5v1.2M18.5 6.5h-1.2M17 3l-.9.9"/></svg></button>
+  <span class="sep"></span>
+  <button data-tool="text" title="Text (T) or double-click the canvas" aria-label="Text"><svg viewBox="0 0 20 20"><path d="M4 5V3.500h12V5M10 3.500v13M7.500 16.500h5"/></svg></button>
+  <button data-tool="frame" title="Frame (F): cards inside take its section" aria-label="Frame"><svg viewBox="0 0 20 20"><path d="M6 2v16M14 2v16M2 6h16M2 14h16"/></svg></button>
+  <button data-tool="arrow" title="Arrow (L): drag from card to card" aria-label="Arrow"><svg viewBox="0 0 20 20"><path d="M3 17L17 3M9 3h8v8"/></svg></button>
+  <button id="add-image" title="File or image: this button, paste (⌘V) or drag from your computer" aria-label="Add file"><svg viewBox="0 0 20 20"><rect x="2.500" y="3.500" width="15" height="13" rx="1.500"/><circle cx="7" cy="8" r="1.300"/><path d="M3 15l4.500-4 3 2.500 3-3 4 3.500"/></svg></button>
+  <span class="sep"></span>
+  <button id="undo" title="Undo (⌘Z)" aria-label="Undo"><svg viewBox="0 0 20 20"><path d="M7 4L3 8l4 4M3 8h9a4.500 4.500 0 010 9H8"/></svg></button>
+  <button id="redo" title="Redo (⇧⌘Z)" aria-label="Redo"><svg viewBox="0 0 20 20"><path d="M13 4l4 4-4 4M17 8H8a4.500 4.500 0 000 9h4"/></svg></button>
+</nav>
+
+<div id="topr" class="topr">
+  <span id="status" class="status" role="status">Connecting…</span>
+  <button id="z-out" class="b" aria-label="Zoom out">−</button>
+  <button id="z-val" class="b num" title="Zoom 100 %">100%</button>
+  <button id="z-in" class="b" aria-label="Zoom in">+</button>
+  <button id="fit" class="b" title="Whole board (⇧1)">Fit</button>
+  <button id="theme" class="b" title="Light or dark theme" aria-label="Theme">◐</button>
+  <button id="show" class="b primary" title="Present (P)" hidden>Present</button>
+</div>
+
+<div id="search" class="topr search" role="search" hidden>
+  <input id="q" class="inp" type="text" placeholder="Find on the board" aria-label="Search the board" autocomplete="off" spellcheck="false">
+  <span id="q-n" class="q-n" aria-live="polite"></span>
+  <button id="q-prev" class="b" title="Previous (⇧Enter, ↑)" aria-label="Previous match">↑</button>
+  <button id="q-next" class="b" title="Next (Enter, ↓)" aria-label="Next match">↓</button>
+  <button id="q-x" class="b" title="Close (Esc)" aria-label="Close search">×</button>
+</div>
+
+<div id="mm" class="minimap" aria-label="Minimap"><canvas id="mm-c"></canvas><button id="mm-t" class="b mm-t" title="Collapse minimap" aria-label="Collapse minimap">−</button></div>
+
+<div id="empty" class="empty"><div><b id="empty-t">Opening the board…</b><span id="empty-s">Loading from the board server.</span></div></div>
+<div id="dropzone" class="dropzone" hidden><span>Drop files on the canvas</span></div>
+<div id="toast" class="toast" hidden><span id="toast-t"></span><button id="toast-b" hidden></button></div>
+<div id="showbar" class="showbar" hidden></div>
+<input type="file" id="file" multiple hidden>
+
+<script>/*JS*/</script>

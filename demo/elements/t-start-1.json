@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-start-1",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Add things.** Double-click the canvas for a card. T makes text, F a frame, L an arrow. Paste or drag images, videos and PDFs straight onto the board.",
+ "type": "howto",
+ "w": 340,
+ "x": 50,
+ "y": 110,
+ "z": 2,
+ "zone": "start"
+}

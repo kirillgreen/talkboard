@@ -1,0 +1,15 @@
+{
+ "fs": 17,
+ "id": "t-start-2",
+ "kind": "text",
+ "parent": null,
+ "style": "card",
+ "tags": [],
+ "text": "**Write in Markdown.** Enter or a double-click opens the editor, ⌘Enter closes it. **Bold**, *italic*, lists and [links](https://commonmark.org/help/) all work.",
+ "type": "howto",
+ "w": 340,
+ "x": 430,
+ "y": 110,
+ "z": 3,
+ "zone": "start"
+}
