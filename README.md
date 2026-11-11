@@ -103,4 +103,4 @@ No build step and no dependencies: the server inlines the page, styles and scrip
 
 ## Licence
 
-Code: MIT, see [LICENSE](LICENSE). Fonts: [Martian Grotesk](https://github.com/evilmartians/grotesk) and [Martian Mono](https://github.com/evilmartians/mono) by Evil Martians, under the SIL Open Font License 1.1, see `fonts/ofl-*.txt`.
+Code: MIT, see [LICENSE](LICENSE). Fonts: [Martian Grotesk](https://github.com/evilmartians/grotesk) and [Martian Mono](https://github.com/evilmartians/mono) by Evil Martians, under the SIL Open Font License 1.1, see `fonts/ofl-*.txt`. Demo image: *The Great Wave off Kanagawa* by Katsushika Hokusai, c. 1831, public domain, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tsunami_by_hokusai_19th_century.jpg).
